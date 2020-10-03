@@ -1,0 +1,19 @@
+Linux 5.4.0-42-generic (terumi-pc) 	09/28/2020 	_x86_64_	(8 CPU)
+
+10:05:48 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+10:05:49 PM  1000      6766   10,00    2,00    0,00    0,00   12,00     0  xfce4-taskmanag
+10:05:50 PM  1000      6766    3,00    0,00    0,00    0,00    10,00     0  xfce4-taskmanag
+10:05:51 PM  1000      6766    5,00    2,00    0,00    0,00    7,00     5  xfce4-taskmanag
+10:05:52 PM  1000      6766    8,00    3,00    0,00    0,00   14,00     5  xfce4-taskmanag
+10:05:53 PM  1000      6766    6,00    1,00    0,00    0,00    7,00     5  xfce4-taskmanag
+10:05:54 PM  1000      6766    5,00    2,00    0,00    0,00    22,00     5  xfce4-taskmanag
+10:05:55 PM  1000      6766   12,00    2,00    0,00    0,00   14,00     3  xfce4-taskmanag
+10:05:56 PM  1000      6766    9,00    2,00    0,00    0,00   15,00     6  xfce4-taskmanag
+10:05:57 PM  1000      6766    6,00    0,00    0,00    0,00    6,00     3  xfce4-taskmanag
+10:05:58 PM  1000      6766   12,00    4,00    0,00    0,00   16,00     5  xfce4-taskmanag
+10:05:59 PM  1000      6766    6,00    2,00    0,00    1,00    8,00     5  xfce4-taskmanag
+10:06:00 PM  1000      6766    6,00    0,00    0,00    0,00    16,00     5  xfce4-taskmanag
+10:06:01 PM  1000      6766   11,00    3,00    0,00    0,00   14,00     6  xfce4-taskmanag
+10:06:02 PM  1000      6766    5,00    1,00    0,00    0,00    6,00     7  xfce4-taskmanag
+10:06:03 PM  1000      6766    3,00    1,00    0,00    0,00    4,00     7  xfce4-taskmanag
+Average:     1000      6766    7,13    1,67    0,00    0,07    8,80     -  xfce4-taskmanag
