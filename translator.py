@@ -12,13 +12,13 @@ def generateGraphic(metric, *args): # metric can be CPU, Mem, Net, Disk
                 print("Metric not valid.")
                 return
         
-        threads = [20]
+        threads = [20, 40]
         mean = []
         std = []
         for threadNo in threads:
                 # ---- PROCESSING EXP. REPETITION
                 filePath = "SOAP-transactional/" + str(threadNo) + "/" + metric
-                repetitionNo = 3 #TODO: change to 15
+                repetitionNo = 15
                 print("Processing samples for " + str(threadNo) + " threads...")
                 values = []
                 for n in range(repetitionNo):
@@ -33,6 +33,6 @@ def generateGraphic(metric, *args): # metric can be CPU, Mem, Net, Disk
         plt.show()
 
 # ---- CALLING FUNCTION ----#
-generateGraphic(sys.argv[1])
+generateGraphic("CPU")
 
 
