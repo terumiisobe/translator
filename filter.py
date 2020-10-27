@@ -28,7 +28,11 @@ def filterSamples(threadNo, metric):
 
                 # metrics variables
                 firstLine = 3
-                metricPosition = 8
+                # CPU = 8
+                # disk = 10
+                # mem = 8
+                # net = 10
+                metricPosition = 10
 
                 lineCounter = 0
                 numberOfSamples = 0
@@ -54,4 +58,4 @@ def filterSamples(threadNo, metric):
                 result.write('\n' + str(mean))
                 result.close()
 
-filterSamples(40, 'CPU')
+filterSamples(20, 'net')

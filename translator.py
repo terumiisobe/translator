@@ -8,11 +8,11 @@ import datetime
 import sys
 
 def generateGraphic(metric, *args): # metric can be CPU, Mem, Net, Disk
-        if(metric != "CPU" and metric != "Mem" and metric != "Net" and metric != "Disk"):
+        if(metric != "CPU" and metric != "mem" and metric != "net" and metric != "disk"):
                 print("Metric not valid.")
                 return
         
-        threads = [20, 40]
+        threads = [20, 40, 60, 80, 100]
         mean = []
         std = []
         for threadNo in threads:
@@ -29,10 +29,10 @@ def generateGraphic(metric, *args): # metric can be CPU, Mem, Net, Disk
                         result.close()
                 mean.append(np.mean(values))
                 std.append(np.std(values))
-        plt.errorbar(threads, mean, std, linestyle='None', marker='^')
+        plt.errorbar(threads, mean, std, linestyle='-', marker='^')
         plt.show()
 
 # ---- CALLING FUNCTION ----#
-generateGraphic("CPU")
+generateGraphic("mem")
 
 
