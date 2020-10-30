@@ -1,0 +1,65 @@
+Linux 4.15.0-122-generic (bookstore) 	10/30/2020 	_x86_64_	(1 CPU)
+
+10:18:14 PM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+10:18:15 PM    dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+10:18:15 PM    dev8-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+
+10:18:15 PM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+10:18:16 PM    dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+10:18:16 PM    dev8-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+
+10:18:16 PM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+10:18:17 PM    dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+10:18:17 PM    dev8-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+
+10:18:17 PM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+10:18:18 PM    dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+10:18:18 PM    dev8-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+
+10:18:18 PM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+10:18:19 PM    dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+10:18:19 PM    dev8-0      1.04      0.00     41.67     40.00      0.00      0.00      4.00      0.42
+
+10:18:19 PM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+10:18:20 PM    dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+10:18:20 PM    dev8-0      1.05      0.00      4.21      4.00      0.08     84.00     80.00      8.42
+
+10:18:20 PM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+10:18:21 PM    dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+10:18:21 PM    dev8-0      7.45      0.00     46.81      6.29      0.00      0.00      0.00      0.00
+
+10:18:21 PM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+10:18:22 PM    dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+10:18:22 PM    dev8-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+
+10:18:22 PM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+10:18:23 PM    dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+10:18:23 PM    dev8-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+
+10:18:23 PM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+10:18:24 PM    dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+10:18:24 PM    dev8-0      1.02      0.00     12.24     12.00      0.01      0.00      8.00      0.82
+
+10:18:24 PM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+10:18:25 PM    dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+10:18:25 PM    dev8-0      1.03      0.00      4.12      4.00      0.07     76.00     68.00      7.01
+
+10:18:25 PM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+10:18:26 PM    dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+10:18:26 PM    dev8-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+
+10:18:26 PM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+10:18:27 PM    dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+10:18:27 PM    dev8-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+
+10:18:27 PM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+10:18:28 PM    dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+10:18:28 PM    dev8-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+
+10:18:28 PM       DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+10:18:29 PM    dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+10:18:29 PM    dev8-0      1.01      0.00      8.08      8.00      0.01      0.00      8.00      0.81
+
+Average:          DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
+Average:       dev7-0      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
+Average:       dev8-0      0.85      0.00      7.94      9.33      0.01     13.33     14.00      1.19
