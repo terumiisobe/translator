@@ -32,16 +32,21 @@ def filterSamples(threadNo, metric):
                 # disk = 10
                 # mem = 8
                 # net = 10
-                metricPosition = 8
+                metricPosition = 10
 
                 lineCounter = 0
                 numberOfSamples = 0
                 sum = 0
                 for line in sample.readlines():
                         firstCharacter = line[0]
-                        if(lineCounter == 0 or lineCounter < firstLine or firstCharacter == 'A'):
+                        if(lineCounter == 0 or lineCounter < firstLine or firstCharacter == 'A' or firstCharacter == '\n'):
                                 lineCounter += 1
                                 continue
+                        if(metric == 'disk'):
+                                dev = line[15:21]
+                                if(dev != 'dev8-0'):
+                                        lineCounter += 1
+                                        continue
                         hour = int(line[0:2])
                         minute = int(line[3:5])
                         second = int(line[6:8])
@@ -58,4 +63,4 @@ def filterSamples(threadNo, metric):
                 result.write('\n' + str(mean))
                 result.close()
 
-filterSamples(100, 'CPU')
+filterSamples(20, 'disk')
