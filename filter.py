@@ -32,7 +32,7 @@ def filterSamples(threadNo, metric):
                 # disk = 10
                 # mem = 8
                 # net = 10
-                metricPosition = 8
+                metricPosition = 10
 
                 lineCounter = 0
                 numberOfSamples = 0
@@ -47,6 +47,11 @@ def filterSamples(threadNo, metric):
                                 if(dev != 'dev8-0'):
                                         lineCounter += 1
                                         continue
+                        if(metric == 'net'):
+                                iface = line[15:21]
+                                if(iface != 'enp0s3'):
+                                       lineCounter += 1
+                                       continue 
                         hour = int(line[0:2])
                         minute = int(line[3:5])
                         second = int(line[6:8])
@@ -63,4 +68,4 @@ def filterSamples(threadNo, metric):
                 result.write('\n' + str(mean))
                 result.close()
 
-filterSamples(100, 'mem')
+filterSamples(20, 'net')
