@@ -58,4 +58,4 @@ def filterSamples(threadNo, metric):
                 result.write('\n' + str(mean))
                 result.close()
 
-filterSamples(80, 'CPU')
+filterSamples(100, 'CPU')
