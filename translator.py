@@ -17,7 +17,7 @@ def generateGraphic(metric, *args): # metric can be CPU, Mem, Net, Disk
         std = []
         for threadNo in threads:
                 # ---- PROCESSING EXP. REPETITION
-                filePath = "SOAP-transactional/" + str(threadNo) + "/" + metric
+                filePath = "SOAP(t)/" + str(threadNo) + "/" + metric
                 repetitionNo = 15
                 print("Processing samples for " + str(threadNo) + " threads...")
                 values = []
@@ -29,10 +29,32 @@ def generateGraphic(metric, *args): # metric can be CPU, Mem, Net, Disk
                         result.close()
                 mean.append(np.mean(values))
                 std.append(np.std(values))
+        if(metric == 'CPU'):
+                plt.title("Porcentagem de utilização do CPU por número de threads \n (SOAP(t) browsing mix)")
+                plt.ylabel("Utilização do CPU pela task (%)")
+                plt.ylim(0, 100)
+        elif(metric == 'disk'):
+                plt.title("Porcentagem de tempo decorrido durante o qual as solicitações de I / O \n foram emitidas para o dispositivo \n (utilização de largura de banda para o dispositivo)")
+                plt.ylabel("Utilização do tempo (%)")
+                plt.ylim(0, 20)
+        elif(metric == 'mem'):
+                plt.title("Porcentagem de memória utilizada por número de threads \n (SOAP(t) browsing mix)")
+                plt.ylabel("Utilização de memória pela task (%)")
+                plt.ylim(12.7, 13.1)
+        elif(metric == 'net'):
+                plt.title("Porcentagem de utilização da interface de internet por número de threads \n (SOAP(t) browsing mix)")
+                plt.ylabel("Utilização (%)")
+                plt.ylim(0, 0.07)
+        plt.xlabel("Número de threads")
+        plt.xlim(0, 100)
+        plt.grid(linestyle=':')
         plt.errorbar(threads, mean, std, linestyle='-', marker='^')
+        for a,b in zip(threads, mean):
+                #plt.text(a, b, str(round(b, 2)))
+                plt.annotate(str(round(b, 2)), xy=(a, b))
         plt.show()
 
 # ---- CALLING FUNCTION ----#
-generateGraphic("mem")
+generateGraphic("net")
 
 
