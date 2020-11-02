@@ -17,7 +17,7 @@ def generateGraphic(metric, *args): # metric can be CPU, Mem, Net, Disk
         std = []
         for threadNo in threads:
                 # ---- PROCESSING EXP. REPETITION
-                filePath = "SOAP(t)/" + str(threadNo) + "/" + metric
+                filePath = "REST(t)/" + str(threadNo) + "/" + metric
                 repetitionNo = 15
                 print("Processing samples for " + str(threadNo) + " threads...")
                 values = []
@@ -30,7 +30,7 @@ def generateGraphic(metric, *args): # metric can be CPU, Mem, Net, Disk
                 mean.append(np.mean(values))
                 std.append(np.std(values))
         if(metric == 'CPU'):
-                plt.title("Porcentagem de utilização do CPU por número de threads \n (SOAP(t) browsing mix)")
+                plt.title("Porcentagem de utilização do CPU por número de threads \n (REST(t) browsing mix)")
                 plt.ylabel("Utilização do CPU pela task (%)")
                 plt.ylim(0, 100)
         elif(metric == 'disk'):
@@ -38,11 +38,11 @@ def generateGraphic(metric, *args): # metric can be CPU, Mem, Net, Disk
                 plt.ylabel("Utilização do tempo (%)")
                 plt.ylim(0, 20)
         elif(metric == 'mem'):
-                plt.title("Porcentagem de memória utilizada por número de threads \n (SOAP(t) browsing mix)")
+                plt.title("Porcentagem de memória utilizada por número de threads \n (REST(t) browsing mix)")
                 plt.ylabel("Utilização de memória pela task (%)")
-                plt.ylim(12.7, 13.1)
+                plt.ylim(11.1, 11.9)
         elif(metric == 'net'):
-                plt.title("Porcentagem de utilização da interface de internet por número de threads \n (SOAP(t) browsing mix)")
+                plt.title("Porcentagem de utilização da interface de internet por número de threads \n (REST(t) browsing mix)")
                 plt.ylabel("Utilização (%)")
                 plt.ylim(0, 0.07)
         plt.xlabel("Número de threads")
@@ -55,6 +55,6 @@ def generateGraphic(metric, *args): # metric can be CPU, Mem, Net, Disk
         plt.show()
 
 # ---- CALLING FUNCTION ----#
-generateGraphic("net")
+generateGraphic("mem")
 
 
