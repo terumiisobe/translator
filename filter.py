@@ -71,4 +71,4 @@ def filterSamples(threadNo, metric):
                 result.write('\n' + str(mean))
                 result.close()
 
-filterSamples(100, 'CPU')
+filterSamples(20, 'disk')
