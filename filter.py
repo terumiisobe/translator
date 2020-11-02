@@ -63,4 +63,4 @@ def filterSamples(threadNo, metric):
                 result.write('\n' + str(mean))
                 result.close()
 
-filterSamples(40, 'disk')
+filterSamples(60, 'disk')
