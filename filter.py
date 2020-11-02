@@ -68,4 +68,4 @@ def filterSamples(threadNo, metric):
                 result.write('\n' + str(mean))
                 result.close()
 
-filterSamples(80, 'net')
+filterSamples(100, 'net')
