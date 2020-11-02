@@ -32,7 +32,7 @@ def filterSamples(threadNo, metric):
                 # disk = 10
                 # mem = 8
                 # net = 10
-                metricPosition = 10
+                metricPosition = 8
 
                 lineCounter = 0
                 numberOfSamples = 0
@@ -63,4 +63,4 @@ def filterSamples(threadNo, metric):
                 result.write('\n' + str(mean))
                 result.close()
 
-filterSamples(100, 'disk')
+filterSamples(20, 'mem')
