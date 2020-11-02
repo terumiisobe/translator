@@ -7,7 +7,7 @@ import datetime
 def filterSamples(threadNo, metric):
         print("Filtering samples...")
         repetitionNo = 15 
-        filePath = "SOAP(t)/" + str(threadNo) + "/" + metric
+        filePath = "REST(t)/" + str(threadNo) + "/" + metric
         timeFile = open("samples/" + filePath + "/time.txt", "r")
         year = 2020
         month = 9
@@ -32,7 +32,10 @@ def filterSamples(threadNo, metric):
                 # disk = 10
                 # mem = 8
                 # net = 10
-                metricPosition = 10
+                if(metric == 'CPU' or metric == 'mem'):
+                        metricPosition = 8
+                elif(metric == 'disk' or metric == 'net'):
+                        metricPosition = 10
 
                 lineCounter = 0
                 numberOfSamples = 0
@@ -68,4 +71,4 @@ def filterSamples(threadNo, metric):
                 result.write('\n' + str(mean))
                 result.close()
 
-filterSamples(100, 'net')
+filterSamples(20, 'CPU')
