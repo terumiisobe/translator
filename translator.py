@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Script to translate sar and pidstat performace results into csv files.
+# Script to translate sar and pidstat performace results into charts.
 # ----------------------------------------------------------------------
 
 import matplotlib.pyplot as plt
@@ -7,54 +7,88 @@ import numpy as np
 import datetime
 import sys
 
-def generateGraphic(metric, *args): # metric can be CPU, Mem, Net, Disk
-        if(metric != "CPU" and metric != "mem" and metric != "net" and metric != "disk"):
-                print("Metric not valid.")
-                return
-        
+def generateChart(comparison, webserviceA, webserviceB,  mix): 
         threads = [20, 40, 60, 80, 100]
-        mean = []
-        std = []
-        for threadNo in threads:
-                # ---- PROCESSING EXP. REPETITION
-                filePath = "SOAP(t)/" + str(threadNo) + "/" + metric
-                repetitionNo = 15
-                print("Processing samples for " + str(threadNo) + " threads...")
-                values = []
-                for n in range(repetitionNo):
-                        print("Processing sample no " + str(n + 1))
-                        result = open("output/" + filePath + "/output_" + str(n + 1) + ".txt", "r")
-                        lines = result.readlines()
-                        values.append(float(lines[1]))
-                        result.close()
-                mean.append(np.mean(values))
-                std.append(np.std(values))
-        if(metric == 'CPU'):
-                plt.title("Porcentagem de utilização do CPU por número de threads \n (SOAP(t) browsing mix)")
-                plt.ylabel("Utilização do CPU pela task (%)")
-                plt.ylim(0, 100)
-        elif(metric == 'disk'):
-                plt.title("Porcentagem de tempo decorrido durante o qual as solicitações de I / O \n foram emitidas para o dispositivo \n (utilização de largura de banda para o dispositivo)")
-                plt.ylabel("Utilização do tempo (%)")
-                plt.ylim(0, 20)
-        elif(metric == 'mem'):
-                plt.title("Porcentagem de memória utilizada por número de threads \n (SOAP(t) browsing mix)")
-                plt.ylabel("Utilização de memória pela task (%)")
-                plt.ylim(11.2, 13.1)
-        elif(metric == 'net'):
-                plt.title("Porcentagem de utilização da interface de internet por número de threads \n (SOAP(t) browsing mix)")
-                plt.ylabel("Utilização (%)")
-                plt.ylim(0, 0.07)
-        plt.xlabel("Número de threads")
-        plt.xlim(0, 100)
-        plt.grid(linestyle=':')
-        plt.errorbar(threads, mean, std, linestyle='-', marker='^')
-        for a,b in zip(threads, mean):
-                #plt.text(a, b, str(round(b, 2)))
-                plt.annotate(str(round(b, 2)), xy=(a, b))
-        plt.show()
+        metrics = ["CPU", "mem", "disk", "net"]
+        for metric in metrics:
+                print("Processing " + mix + " for metric " + metric + "...")
+                meanA = []
+                stdA = []
+                meanB = []
+                stdB = []
+                for thread in threads:
+                        filePathA = webserviceA + "/" + mix + "/" + str(thread) + "/" + metric
+                        if comparison:
+                                filePathB = webserviceB + "/" + mix + "/" + str(thread) + "/" + metric
+                        repetitionNo = 15
+                        values = []
+                        # ---- processing samples for A
+                        for n in range(repetitionNo):
+                                result = open("output/" + filePathA + "/output_" + str(n + 1) + ".txt", "r")
+                                lines = result.readlines()
+                                values.append(float(lines[1]))
+                                result.close()
+                        # ---- adding mean and standand deviation to A chart arrays 
+                        meanA.append(np.mean(values))
+                        stdA.append(np.std(values))
+                        if not comparison:
+                                continue
+                        values = []
+                        # ---- processing samples for B
+                        for n in range(repetitionNo):
+                                result = open("output/" + filePathB + "/output_" + str(n + 1) + ".txt", "r")
+                                lines = result.readlines()
+                                values.append(float(lines[1]))
+                                result.close()
+                        # ---- adding mean and standand deviation to A chart arrays 
+                        meanB.append(np.mean(values))
+                        stdB.append(np.std(values))
+                # ---- generating chart
+                if(metric == "CPU"):
+                        plt.title("Porcentagem de utilização do CPU por número de threads")
+                        plt.ylabel("Utilização do CPU pela task (%)")
+                        plt.ylim(0, 55)
+                        disX=2
+                        disY=-2
+                elif(metric == "disk"):
+                        plt.title("Porcentagem de tempo decorrido durante o qual as solicitações de I / O \n foram emitidas para o dispositivo \n (utilização de largura de banda para o dispositivo)")
+                        plt.ylabel("Utilização do tempo (%)")
+                        plt.ylim(0, 20)
+                        disX=0
+                        disY=1
+                elif(metric == "mem"):
+                        plt.title("Porcentagem de memória utilizada por número de threads")
+                        plt.ylabel("Utilização de memória pela task (%)")
+                        plt.ylim(0, 14)
+                        disX=0
+                        disY=0.5
+                elif(metric == "net"):
+                        plt.title("Porcentagem de utilização da interface de internet por número de threads")
+                        plt.ylabel("Utilização (%)")
+                        plt.ylim(0, 0.07)
+                        disX=0.01
+                        disY=-0
+                plt.xlabel("Número de threads")
+                plt.xlim(0, 110)
+                plt.grid(linestyle=':')
+                plt.errorbar(threads, meanA, stdA, linestyle='-', marker='^')
+                plt.legend()
+                for a,b in zip(threads, meanA):
+                        plt.annotate(str(round(b, 2)), xy=(a+disX, b+disY))
+                if comparison:
+                        # plt.legend(meanB, webserviceB)
+                        plt.errorbar(threads, meanB, stdB, linestyle='-', marker='^')
+                        for a,b in zip(threads, meanB):
+                                plt.annotate(str(round(b, 2)), xy=(a-disX, b-disY))
+                if comparison:
+                        savePath = "graphs/comparison/" + mix + "/Comparison - " + mix + " - " + metric + ".png"
+                else:
+                        savePath = "graphs/" + webserviceA + "/" + mix + "/" + webserviceA + " - " + mix + " - " + metric + ".png"
+                plt.show()
+                ##plt.savefig(savePath)
+                plt.clf()
+                print("Chart plotted!")
+
 
 # ---- CALLING FUNCTION ----#
-generateGraphic("mem")
-
-
+generateChart(True, "SOAP(t)", "REST(t)", "browsing")
