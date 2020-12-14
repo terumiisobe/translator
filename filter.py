@@ -13,7 +13,7 @@ def filterSamples(webservice, mix):
                         print("> Thread number " + str(thread))
                         repetitionNo = 15 
                         filePath = webservice + "/" + mix + "/" + str(thread) + "/" + metric
-                        timeFile = open("samples/" + filePath + "/time.txt", "r")
+                        timeFile = open("samples/" + webservice + "/" + mix + "/" + str(thread) + "/time.txt", "r")
                         year = 2020
                         month = 9
                         day = 16
@@ -35,8 +35,10 @@ def filterSamples(webservice, mix):
                                 firstLine = 3
                                 if(metric == 'CPU' or metric == 'mem'):
                                         metricPosition = 8
-                                elif(metric == 'disk' or metric == 'net'):
+                                elif(metric == 'net'):
                                         metricPosition = 10
+                                elif(metric == 'disk'):
+                                        metricPosition = 3
 
                                 lineCounter = 0
                                 numberOfSamples = 0
@@ -48,7 +50,7 @@ def filterSamples(webservice, mix):
                                                 continue
                                         if(metric == 'disk'):
                                                 dev = line[15:21]
-                                                if(dev != 'dev8-0'):
+                                                if((mix == 'browsing' and dev != 'dev8-0') or (mix == 'shopping' and dev != 'v253-0')):
                                                         lineCounter += 1
                                                         continue
                                         if(metric == 'net'):
@@ -72,14 +74,11 @@ def filterSamples(webservice, mix):
                                 result.write('\n' + str(mean))
                                 result.close()
 
-filterSamples('REST(t)', 'browsing')
+filterSamples('SOAP(t)', 'browsing')
 # parameters:
 # - webservice = 
 #       -SOAP(t)
-#       -SOAP(n)
 #       -REST(t)
-#       -REST(n)
 # - mix = 
 #       -browsing
 #       -shopping
-#       -ordering
