@@ -3,6 +3,7 @@
 # repetitions of the experiment.
 # ----------------------------------------------------------------------
 import datetime
+import numpy as np
 
 def filterSamples(webservice, mix):
         threads = [20, 40, 60, 80, 100]
@@ -73,6 +74,24 @@ def filterSamples(webservice, mix):
                                 mean = sum/numberOfSamples
                                 result.write('\n' + str(mean))
                                 result.close()
+                # filters average response time
+                timeFile = open("samples/" + webservice + "/" + mix + "/" + str(thread) + "/time.txt", "r")
+                testTime = open("samples/" + webservice + "/" + mix + "/" + str(thread) + "/avgTime.txt", "w+")
+                timeArray = []
+                sum = 0
+                for line in timeFile.readlines():
+                        s = line.split()
+                        begin = s[1]
+                        end = s[2]
+                        dateFormat = '%H:%M:%S'
+                        timeDiff = datetime.datetime.strptime(end, dateFormat) - datetime.datetime.strptime(begin, dateFormat)
+                        seconds = timeDiff.total_seconds()
+                        timeArray.append(seconds) 
+                        sum = sum + seconds
+                mean = np.mean(timeArray)
+                std = np.std(timeArray)
+                testTime.write(str(mean) + "," + str(std))
+                testTime.close()
 
 filterSamples('SOAP(t)', 'browsing')
 # parameters:
