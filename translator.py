@@ -21,7 +21,7 @@ def returnGraphSpec(mix, metric):
                 if(mix == 'browsing'):
                         variables['ylim'] = 55
                 if(mix == 'shopping'):
-                        variables['ylim'] = 55
+                        variables['ylim'] = 70
     
         elif(metric == 'disk'):
                 variables['title']= "Número total de transferências (requisições I/O) por segundo"
@@ -29,7 +29,7 @@ def returnGraphSpec(mix, metric):
                 if(mix == 'browsing'):
                         variables['ylim'] = 55
                 if(mix == 'shopping'):
-                        variables['ylim'] = 55
+                        variables['ylim'] = 100
 
         elif(metric == 'mem'):
                 variables['title']= "Porcentagem de memória utilizada por número de threads"
@@ -143,4 +143,4 @@ def generateChart(comparison, webserviceA, webserviceB,  mix):
 
 
 # ---- CALLING FUNCTION ----#
-generateChart(True, "SOAP(t)", "REST(t)", "browsing")
+generateChart(True, "REST(t)", "SOAP(t)", "shopping")
