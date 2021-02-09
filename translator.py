@@ -66,7 +66,7 @@ def generateChart(comparison, webserviceA, webserviceB,  mix):
                                 filePathB = webserviceB + "/" + mix + "/" + str(thread)
                                 if(metric != 'time'):
                                         filePathB = filePathB + "/" + metric
-                        repetitionNo = 15
+                        repetitionNo = 10
                         values = []
                         # ---- processing samples for A
                         if(metric == 'time'):

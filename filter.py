@@ -6,13 +6,13 @@ import datetime
 import numpy as np
 
 def filterSamples(webservice, mix):
-        threads = [20, 40, 60, 80, 100]
+        threads = [20, 40, 60, 80,100]
         for thread in threads:
                 metrics = ['CPU', 'mem', 'disk', 'net']
                 for metric in metrics:
                         print("Filtering samples for " + webservice + " metric " + metric + " ...");
                         print("> Thread number " + str(thread))
-                        repetitionNo = 15 
+                        repetitionNo = 10
                         filePath = webservice + "/" + mix + "/" + str(thread) + "/" + metric
                         timeFile = open("samples/" + webservice + "/" + mix + "/" + str(thread) + "/time.txt", "r")
                         year = 2020
@@ -46,7 +46,7 @@ def filterSamples(webservice, mix):
                                 sum = 0
                                 for line in sample.readlines():
                                         firstCharacter = line[0]
-                                        if(lineCounter == 0 or lineCounter < firstLine or firstCharacter == 'A' or firstCharacter == '\n'):
+                                        if(lineCounter == 0 or lineCounter < firstLine or firstCharacter == 'A' or firstCharacter == '\n' or firstCharacter == '\x00'):
                                                 lineCounter += 1
                                                 continue
                                         if(metric == 'disk'):
@@ -58,8 +58,8 @@ def filterSamples(webservice, mix):
                                                 iface = line[15:21]
                                                 if(iface != 'enp0s3'):
                                                         lineCounter += 1
-                                                        continue 
-                                        hour = int(line[0:2])
+                                                        continue
+                                        hour = int(line[0:2]) + 9
                                         minute = int(line[3:5])
                                         second = int(line[6:8])
                                         sampleTime = datetime.datetime(year, month, day, hour, minute, second)
@@ -93,7 +93,7 @@ def filterSamples(webservice, mix):
                 testTime.write(str(mean) + "," + str(std))
                 testTime.close()
 
-filterSamples('SOAP(t)', 'browsing')
+filterSamples('REST(t)', 'shopping')
 # parameters:
 # - webservice = 
 #       -SOAP(t)
