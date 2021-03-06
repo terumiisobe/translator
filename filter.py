@@ -6,7 +6,7 @@ import datetime
 import numpy as np
 
 def filterSamples(webservice, mix):
-        threads = [20, 40, 60, 80,100]
+        threads = [20, 40, 60, 80,100, 120]
         for thread in threads:
                 metrics = ['CPU', 'mem', 'disk', 'net']
                 for metric in metrics:
