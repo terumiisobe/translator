@@ -93,7 +93,7 @@ def filterSamples(webservice, mix):
                 testTime.write(str(mean) + "," + str(std))
                 testTime.close()
 
-filterSamples('REST(t)', 'shopping')
+filterSamples('SOAP(t)', 'shopping')
 # parameters:
 # - webservice = 
 #       -SOAP(t)
