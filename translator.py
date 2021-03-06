@@ -50,7 +50,7 @@ def returnGraphSpec(mix, metric):
         return variables
 
 def generateChart(comparison, webserviceA, webserviceB,  mix): 
-        threads = [20, 40, 60, 80, 100]
+        threads = [20, 40, 60, 80, 100, 120]
         metrics = ["CPU", "mem", "disk", "net", "time"]
         for metric in metrics:
                 print("Processing " + mix + " for metric " + metric + "...")
@@ -126,7 +126,7 @@ def generateChart(comparison, webserviceA, webserviceB,  mix):
                 plt.ylim(0, graphVaribles['ylim'])
 
                 plt.xlabel("Número de threads")
-                plt.xlim(0, 120)
+                plt.xlim(0, 140)
                 plt.grid(linestyle=':')
                 plt.errorbar(threads, meanA, stdA, linestyle='-', marker='^')
                 plt.legend()
